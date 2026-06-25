@@ -1,43 +1,38 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="id">
 <head>
-    <!-- SEO -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERINE & EKIN Daily Update</title><meta name="description" content="Daily Updates, news, events, gallery, and theater information.">
-<meta name="keywords" content="JKT48, Idol Group, Theater, Members, Events, News">
-<meta name="author" content="ERINE & EKIN Daily Update">
-
-<!-- Open Graph -->
-<meta property="og:title" content="ERINE & EKIN Daily Updates">
-<meta property="og:description" content="The ultimate fan portal for JKT48 enthusiasts.">
-<meta property="og:type" content="website">
-
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"JKT48 Official Fan Portal",
-  "address":{
-    "@type":"PostalAddress",
-    "streetAddress":"Jl. Jenderal Sudirman No.1",
-    "addressLocality":"Jakarta Pusat",
-    "addressRegion":"DKI Jakarta",
-    "postalCode":"10270",
-    "addressCountry":"ID"
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ERINE & EKIN Daily Update</title>
+  <meta name="description" content="Daily Updates, news, events, gallery, and theater information for Erine & Ekin JKT48.">
+  <meta name="keywords" content="JKT48, Erine, Ekin, Idol Group, Theater, Members, Events, News">
+  <meta name="author" content="ERINE & EKIN Daily Update">
+  <meta property="og:title" content="ERINE & EKIN Daily Updates">
+  <meta property="og:description" content="The ultimate fan portal for Erine & Ekin JKT48 enthusiasts.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Erine & Ekin Daily Update"
   }
-}
-</script>
+  </script>
+</head>
+<body>
 
-</head><body><!-- Loading Screen -->
+<!-- Custom Cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<canvas id="sparkle-canvas"></canvas>
+
+<!-- Loading Screen -->
 <div id="loader">
-    <div class="spinner"></div>
+  <div class="loader-inner">
+    <div class="loader-blob"></div>
+    <p class="loader-text">Loading...</p>
+  </div>
 </div>
 
 <!-- Scroll Progress -->
@@ -45,481 +40,261 @@
 
 <!-- Navigation -->
 <header>
-    <nav class="navbar">
-
-        <div class="logo">
-            Erine & Ekin
-        </div>
-
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#theater">Theater</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-
-        <div class="nav-actions">
-            <button id="theme-toggle">🌙</button>
-            <button id="menu-btn">☰</button>
-        </div>
-
-    </nav>
+  <nav class="navbar">
+    <div class="logo">
+      <span class="logo-e">E</span>rine &amp; <span class="logo-e">E</span>kin
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#socials">Socials</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#theater">Theater</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      <button id="menu-btn" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
 </header>
 
 <!-- Hero Section -->
 <section id="home" class="hero">
+  <!-- Liquid Blob Canvas -->
+  <canvas id="blob-canvas"></canvas>
 
-    <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline>
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="assets/videos/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
 
-        <source
-            src="assets/videos/hero.mp4"
-            type="video/mp4">
-
-    </video>
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <h1>
-            Welcome to ERINE & EKIN
-            Daily Update
-        </h1>
-
-        <p>
-            Latest photos, news,
-            schedules, and updates.
-        </p>
-
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ JKT48 Fan Portal ✦</p>
+    <h1 id="typewriter-text"></h1>
+    <p class="hero-sub">Latest photos, news, schedules, and updates for Erine &amp; Ekin.</p>
+    <div class="hero-buttons">
+      <a href="#about" class="btn-primary">Meet Them ✨</a>
+      <a href="#events" class="btn-secondary">Upcoming Events</a>
     </div>
+  </div>
 
-</section>
-
-        <div class="hero-buttons">
-            <a href="#members" class="btn-primary">
-                Coming soon...
-            </a>
-
-            <a href="#events" class="btn-secondary">
-                Upcoming Events
-            </a>
-        </div>
-    </div>
-
+  <!-- Floating blobs decoration -->
+  <div class="blob-deco blob-1"></div>
+  <div class="blob-deco blob-2"></div>
+  <div class="blob-deco blob-3"></div>
 </section>
 
 <!-- About -->
-<section class="about section">
+<section id="about" class="about section">
+  <div class="container">
+    <div class="section-title">
+      <h2>About Erine &amp; Ekin</h2>
+    </div>
+    <div class="about-content">
 
-    <div class="container">
-
-        <div class="section-title">
-            <h2>About Erine</h2>
+      <div class="about-card tilt-card">
+        <div class="card-glow"></div>
+        <img src="assets/images/erine.jpg" alt="Erine" class="profile-image">
+        <h3>Erine</h3>
+        <p class="catchphrase">"Hadir dengan seribu kejutan, Checkmate! Siap memenangkan hatimu."</p>
+        <div class="bio-grid">
+          <div class="bio-item"><span>Real Name</span><strong>Catherina Vallencia Kurniawan</strong></div>
+          <div class="bio-item"><span>Birthday</span><strong>21 August 2007</strong></div>
+          <div class="bio-item"><span>Hometown</span><strong>Bekasi, West Java</strong></div>
+          <div class="bio-item"><span>Blood Type</span><strong>B</strong></div>
+          <div class="bio-item"><span>Zodiac</span><strong>♌ Leo</strong></div>
+          <div class="bio-item"><span>Height</span><strong>162 cm</strong></div>
         </div>
+        <p class="description">Catherina Vallencia Kurniawan, dikenal sebagai Erine, merupakan member JKT48 Team Passion yang dikenal dengan energi ceria dan kepribadian yang menarik.</p>
+      </div>
 
-        <div class="about-content">
-
-<div class="about-content">
-
-<div class="about-card"><img src="assets/images/erine.jpg" alt="Erine" class="profile-image">
-
-<h3>Erine</h3>
-
-<p class="catchphrase">
-    "Hadir dengan seribu kejutan, Checkmate!
-    Siap memenangkan hatimu."
-</p>
-
-<div class="bio-grid">
-
-    <div class="bio-item">
-        <span>Real Name</span>
-        <strong>Catherina Vallencia Kurniawan</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Birthday</span>
-        <strong>21 August 2007</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Hometown</span>
-        <strong>Bekasi, West Java</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Blood Type</span>
-        <strong>B</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Zodiac</span>
-        <strong>♌ Leo</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Height</span>
-        <strong>162 cm</strong>
-    </div>
-
-</div>
-
-<p class="description">
-    Catherina Vallencia Kurniawan, dikenal sebagai Erine,
-    merupakan member JKT48 Team Passion yang dikenal
-    dengan energi ceria dan kepribadian yang menarik.
-</p>
-
-</div>
-
-<div class="about-card"><img src="assets/images/ekin.jpg" alt="Ekin" class="profile-image">
-
-<h3>Ekin</h3>
-
-<p class="catchphrase">
-    "Sesejuk dan sedingin mint.
-    Perkenalkan, aku Ekin."
-</p>
-
-<div class="bio-grid">
-
-    <div class="bio-item">
-        <span>Real Name</span>
-        <strong>Jacqueline Immanuela Jonathan</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Birthday</span>
-        <strong>9 July 2009</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Hometown</span>
-        <strong>Jakarta, Indonesia</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Blood Type</span>
-        <strong>B</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Zodiac</span>
-        <strong>♋ Cancer</strong>
-    </div>
-
-    <div class="bio-item">
-        <span>Height</span>
-        <strong>161 cm</strong>
-    </div>
-
-</div>
-
-<p class="description">
-    Jacqueline Immanuela Jonathan atau Ekin merupakan
-    trainee JKT48 yang dikenal dengan karakter lembut
-    dan pembawaannya yang menenangkan.
-</p>
-
-</div>
-
-            <div class="stats">
-
-                <div class="stat-card">
-                    <h3 class="counter" data-target="48">0</h3>
-                    <p>Members</p>
-                </div>
-
-                <div class="stat-card">
-                    <h3 class="counter" data-target="500">0</h3>
-                    <p>Performances</p>
-                </div>
-
-                <div class="stat-card">
-                    <h3 class="counter" data-target="1000000">0</h3>
-                    <p>Fans</p>
-                </div>
-
-            </div>
-
+      <div class="about-card tilt-card">
+        <div class="card-glow"></div>
+        <img src="assets/images/ekin.jpg" alt="Ekin" class="profile-image">
+        <h3>Ekin</h3>
+        <p class="catchphrase">"Sesejuk dan sedingin mint. Perkenalkan, aku Ekin."</p>
+        <div class="bio-grid">
+          <div class="bio-item"><span>Real Name</span><strong>Jacqueline Immanuela Jonathan</strong></div>
+          <div class="bio-item"><span>Birthday</span><strong>9 July 2009</strong></div>
+          <div class="bio-item"><span>Hometown</span><strong>Jakarta, Indonesia</strong></div>
+          <div class="bio-item"><span>Blood Type</span><strong>B</strong></div>
+          <div class="bio-item"><span>Zodiac</span><strong>♋ Cancer</strong></div>
+          <div class="bio-item"><span>Height</span><strong>161 cm</strong></div>
         </div>
+        <p class="description">Jacqueline Immanuela Jonathan atau Ekin merupakan trainee JKT48 yang dikenal dengan karakter lembut dan pembawaannya yang menenangkan.</p>
+      </div>
 
     </div>
 
+    <div class="stats">
+      <div class="stat-card tilt-card">
+        <div class="stat-icon">🎭</div>
+        <h3 class="counter" data-target="48">0</h3>
+        <p>Members</p>
+      </div>
+      <div class="stat-card tilt-card">
+        <div class="stat-icon">🎤</div>
+        <h3 class="counter" data-target="500">0</h3>
+        <p>Performances</p>
+      </div>
+      <div class="stat-card tilt-card">
+        <div class="stat-icon">💖</div>
+        <h3 class="counter" data-target="1000000">0</h3>
+        <p>Fans</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Sosmed -->
+<!-- Socials -->
 <section id="socials" class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Official Links</h2>
+    </div>
+    <div class="social-grid">
 
-    <div class="container">
+      <div class="social-card tilt-card">
+        <div class="card-glow"></div>
+        <h3>Erine</h3>
+        <a href="https://www.instagram.com/jkt48.erine?igsh=MTVscml5dHJieXhwcA==" target="_blank" class="social-btn">
+          <img src="assets/icons/instagram.png" class="social-icon" alt="Instagram"> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@jkt48.erine_?_r=1&_t=ZS-97UpydwsJwe" target="_blank" class="social-btn">
+          <img src="assets/icons/tiktok.png" class="social-icon" alt="TikTok"> TikTok
+        </a>
+        <a href="https://www.idn.app/jkt48_erine?c=web-android&deep_link_value=profile%2Fb0e628c8-0b0a-40c7-aa6a-a1c7660c25ce&pid=idnapp" target="_blank" class="social-btn">
+          <img src="assets/icons/idn.png" class="social-icon idn" alt="IDN"> IDN Live
+        </a>
+        <a href="https://www.showroom-live.com/room/profile?room_id=510000" target="_blank" class="social-btn">
+          🎥 Showroom
+        </a>
+      </div>
 
-        <div class="section-title">
-
-            <h2>Official Links</h2>
-
-        </div>
-
-        <div class="social-grid">
-
-            <!-- ERINE -->
-
-            <div class="social-card">
-
-                <h3>Erine</h3>
-
-                <a href="https://www.instagram.com/jkt48.erine?igsh=MTVscml5dHJieXhwcA=="
-                   target="_blank"
-                   class="social-btn">
-<img
-src="assets/icons/instagram.png"
-class="social-icon">
-
-                </a>
-
-                <a href="https://www.tiktok.com/@jkt48.erine_?_r=1&_t=ZS-97UpydwsJwe"
-                   target="_blank"
-                   class="social-btn">
-<img
-src="assets/icons/tiktok.png"
-class="social-icon">
-                  
-                </a>
-
-                <a href="https://www.idn.app/jkt48_erine?c=web-android&deep_link_value=profile%2Fb0e628c8-0b0a-40c7-aa6a-a1c7660c25ce&pid=idnapp"
-                   target="_blank"
-                   class="social-btn">
-<img
-src="assets/icons/idn.png"
-class="social-icon1">
-                  
-                </a>
-
-                <a href="https://www.showroom-live.com/room/profile?room_id=510000"
-                   target="_blank"
-                   class="social-btn">
-
-                   Showroom
-                </a>
-
-            </div>
-
-            <!-- EKIN -->
-
-            <div class="social-card">
-
-                <h3>Ekin</h3>
-
-                <a href="https://www.instagram.com/ekin.jkt48?igsh=MWlwaDl2eXRsbWRyag=="
-                   target="_blank"
-                   class="social-btn">
-<img
-src="assets/icons/instagram.png"
-class="social-icon">
-                  
-                </a>
-
-                <a href="https://www.tiktok.com/@jkt48.ekin?_r=1&_t=ZS-97UpyMAxm3E"
-                   target="_blank"
-                   class="social-btn">
-<img
-src="assets/icons/tiktok.png"
-class="social-icon">
-                  
-                </a>
-
-                <a href="https://www.idn.app/jkt48_ekin"
-                   target="_blank"
-                   class="social-btn">
-<img
-src="assets/icons/idn.png"
-class="social-icon1">
-                  
-                </a>
-
-                <a href="https://www.showroom-live.com/room/profile?room_id=547065"
-                   target="_blank"
-                   class="social-btn">
-
-                    Showroom
-                </a>
-
-            </div>
-
-        </div>
+      <div class="social-card tilt-card">
+        <div class="card-glow"></div>
+        <h3>Ekin</h3>
+        <a href="https://www.instagram.com/ekin.jkt48?igsh=MWlwaDl2eXRsbWRyag==" target="_blank" class="social-btn">
+          <img src="assets/icons/instagram.png" class="social-icon" alt="Instagram"> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@jkt48.ekin?_r=1&_t=ZS-97UpyMAxm3E" target="_blank" class="social-btn">
+          <img src="assets/icons/tiktok.png" class="social-icon" alt="TikTok"> TikTok
+        </a>
+        <a href="https://www.idn.app/jkt48_ekin" target="_blank" class="social-btn">
+          <img src="assets/icons/idn.png" class="social-icon idn" alt="IDN"> IDN Live
+        </a>
+        <a href="https://www.showroom-live.com/room/profile?room_id=547065" target="_blank" class="social-btn">
+          🎥 Showroom
+        </a>
+      </div>
 
     </div>
-
+  </div>
 </section>
 
 <!-- Member Modal -->
 <div id="memberModal" class="modal">
-
-    <div class="modal-content">
-
-        <span class="close-modal">&times;</span>
-
-        <h2 id="modalName">
-            Member Name
-        </h2>
-
-        <p id="modalDescription">
-            Profile information here...
-        </p>
-
-    </div>
-
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2 id="modalName">Member Name</h2>
+    <p id="modalDescription">Profile information here...</p>
+  </div>
 </div>
 
 <!-- News -->
 <section id="news" class="news section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Latest News</h2>
-        </div>
-
-        <div class="news-filter">
-            <button class="filter-btn active">
-                All
-            </button>
-
-            <button class="filter-btn">
-                Event
-            </button>
-
-            <button class="filter-btn">
-                Announcement
-            </button>
-        </div>
-
-        <div class="news-grid">
-
-            <article class="news-card">
-                <h3>New Theater Performance Announced</h3>
-                <p>
-                    Check out the latest performance schedule.
-                </p>
-                <button>Read More</button>
-            </article>
-
-        </div>
-
+  <div class="container">
+    <div class="section-title">
+      <h2>Latest News</h2>
     </div>
-
+    <div class="news-filter">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Event</button>
+      <button class="filter-btn">Announcement</button>
+    </div>
+    <div class="news-grid">
+      <article class="news-card tilt-card">
+        <div class="news-tag">Announcement</div>
+        <h3>New Theater Performance Announced</h3>
+        <p>Check out the latest performance schedule for Erine &amp; Ekin at JKT48 Theater.</p>
+        <button class="read-more-btn">Read More →</button>
+      </article>
+    </div>
+  </div>
 </section>
 
 <!-- Events -->
 <section id="events" class="events section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Upcoming Events</h2>
-        </div>
-
-        <div id="countdown">
-            00 : 00 : 00 : 00
-        </div>
-
+  <div class="container">
+    <div class="section-title">
+      <h2>Upcoming Events</h2>
     </div>
-
+    <div class="countdown-wrap">
+      <div class="countdown-label">Next Event Countdown</div>
+      <div id="countdown">
+        <div class="cd-block"><span id="cd-days">00</span><small>Days</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span id="cd-hours">00</span><small>Hours</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span id="cd-mins">00</span><small>Mins</small></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-block"><span id="cd-secs">00</span><small>Secs</small></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Gallery -->
 <section id="gallery" class="gallery section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Gallery</h2>
-        </div>
-
-        <div class="gallery-grid">
-
-            <img src="assets/images/gallery1.jpg" alt="" loading="lazy">
-
-            <img src="assets/images/gallery2.jpg" alt="" loading="lazy">
-
-            <img src="assets/images/gallery3.jpg" alt="" loading="lazy">
-
-        </div>
-
+  <div class="container">
+    <div class="section-title">
+      <h2>Gallery</h2>
     </div>
-
+    <div class="gallery-grid">
+      <img src="assets/images/gallery1.jpg" alt="Gallery 1" loading="lazy">
+      <img src="assets/images/gallery2.jpg" alt="Gallery 2" loading="lazy">
+      <img src="assets/images/gallery3.jpg" alt="Gallery 3" loading="lazy">
+    </div>
+  </div>
 </section>
 
 <!-- Theater -->
 <section id="theater" class="theater section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>JKT48 Theater</h2>
-        </div>
-
-        <p>
-            Jl. Jenderal Sudirman No.1, RT.1/RW.3,
-            Gelora, Kecamatan Tanah Abang,
-            Kota Jakarta Pusat,
-            DKI Jakarta 10270
-        </p>
-
-        <iframe
-            src="https://maps.google.com/maps?q=JKT48%20Theater&t=&z=15&ie=UTF8&iwloc=&output=embed">
-        </iframe>
-
+  <div class="container">
+    <div class="section-title">
+      <h2>JKT48 Theater</h2>
     </div>
+    <p>Jl. Jenderal Sudirman No.1, RT.1/RW.3, Gelora, Kecamatan Tanah Abang, Kota Jakarta Pusat, DKI Jakarta 10270</p>
+    <iframe src="https://maps.google.com/maps?q=JKT48%20Theater&t=&z=15&ie=UTF8&iwloc=&output=embed" title="JKT48 Theater Location"></iframe>
+  </div>
+</section>
 
 <!-- Contact -->
 <section id="contact" class="contact section">
-
-    <div class="container">
-
-        <div class="section-title">
-            <h2>Contact Us</h2>
-        </div>
-
-        <form id="contactForm">
-
-            <input type="text" placeholder="Name" required>
-
-            <input type="email" placeholder="Email" required>
-
-            <textarea placeholder="Message"></textarea>
-
-            <button type="submit">
-                Send Message
-            </button>
-
-        </form>
-
+  <div class="container">
+    <div class="section-title">
+      <h2>Contact Us</h2>
     </div>
-
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5"></textarea>
+      <button type="submit">Send Message 💌</button>
+    </form>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer>
-
-    <p>
-        © 2026 Ekin & Erine Daily Updates.
-        All Rights Reserved.
-    </p>
-
-    <button id="backToTop">
-        ↑
-    </button>
-
+  <div class="footer-blob"></div>
+  <p class="footer-logo"><span class="logo-e">E</span>rine &amp; <span class="logo-e">E</span>kin</p>
+  <p>© 2026 Erine &amp; Ekin Daily Updates. All Rights Reserved.</p>
+  <button id="backToTop" aria-label="Back to top">↑</button>
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
